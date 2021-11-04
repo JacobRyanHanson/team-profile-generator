@@ -39,3 +39,4 @@ Made by Jacob Hanson
 Note: All commands that need to be run from the terminal in the root directory.
 
 ### Walkthrough Video
+https://user-images.githubusercontent.com/89164466/140407384-b3d87085-5ead-45d3-947a-a6960446d7ed.mp4
