@@ -32,30 +32,32 @@ function makeHTMLSections(team) {
         let info;
 
         if (element.getRole() === "Manager") {
-            icon = "<i class='fas fa-coffee'></i>"
+            icon = "<i class='fas fa-coffee fa-lg'></i>"
             info = "Office Number: " + element.getOfficeNumber();
         } else if (element.getRole() == "Engineer") {
-            icon = "<i class='fas fa-calculator'></i>";
-            info = "GitHub: " + element.getGithub();
+            icon = "<i class='fas fa-calculator fa-lg'></i>";
+            info = "<a href='https://github.com/" + element.getGithub() + "'>GitHub: " + element.getGithub() + "</a>";
         } else {
-            icon = "<i class='fas fa-graduation-cap'></i>";
+            icon = "<i class='fas fa-graduation-cap fa-lg'></i>";
             info = "School: " + element.getSchool();
         }
-        console.log(element)
-        return `
-<section>
-    <p>${element.getName()}</p>
-    ${icon} 
-    <p>${element.getRole()}</p>
-</section>
 
-<section>
-    <p>ID: ${element.getId()}</p>
-    <p>Email: ${element.getEmail()}</p>
-    <p>${info}</p>
+        return `
+<section class='card'>
+    <section class='card-head'>
+        <p class='name'>${element.getName()}</p>
+        ${icon} 
+        <p class='role inline'>${element.getRole()}</p>
+    </section>
+
+    <section class='card-body'>
+        <p>ID: ${element.getId()}</p>
+        <p><a href='mailto:${element.getEmail()}'>Email: ${element.getEmail()}</a></p>
+        <p>${info}</p>
+    </section>
 </section>
         `;
-    })
+    });
 }
 
 module.exports = formatHTML;

@@ -1,0 +1,61 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+h1 {
+    background: #e84756;
+    padding: 3%;
+    color: white;
+    font-size: xxx-large;
+    text-align: center;
+}
+
+main {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    flex-grow: 1;
+}
+
+a {
+    color: black;
+    text-decoration: none;
+}
+
+.card {
+    flex-basis: 20%;
+    margin: 10px;
+    background: #f5f6f8;
+    box-shadow: 5px 5px 5px #818181;
+}
+
+.card-head, .card-body {
+    padding: 10px;
+}
+
+.card-head {
+    background: #0077f7;
+    color: white;
+}
+
+.card-head .name {
+    font-size: xx-large;
+}
+
+.card-head .role {
+    font-size: x-large;
+}
+
+.inline {
+    display: inline;
+}
+
+.card-body p {
+    font-size: large;
+    border: solid #ececec 1px;
+    background: white;
+    padding: 10px;
+}
