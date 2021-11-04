@@ -1,3 +1,4 @@
+// Formats the HTML for the page based on the strings (cards) returned by the makeHTMLSections function.
 function formatHTML(team) {
     return `
 <!DOCTYPE html>
@@ -25,7 +26,7 @@ function formatHTML(team) {
 </html>
     `;
 }
-
+// For each object in the team array a section (card) is generated as an HTML string and stored in the mapped array.
 function makeHTMLSections(team) {
     return team.map(function (element) {
         let icon;
