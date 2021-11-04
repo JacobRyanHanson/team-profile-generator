@@ -37,7 +37,7 @@ function makeHTMLSections(team) {
             info = "Office Number: " + element.getOfficeNumber();
         } else if (element.getRole() == "Engineer") {
             icon = "<i class='fas fa-calculator fa-lg'></i>";
-            info = "<a href='https://github.com/" + element.getGithub() + "'>GitHub: " + element.getGithub() + "</a>";
+            info = "<a href='https://github.com/" + element.getGithub() + "' target='_blank'>GitHub: " + element.getGithub() + "</a>";
         } else {
             icon = "<i class='fas fa-graduation-cap fa-lg'></i>";
             info = "School: " + element.getSchool();
