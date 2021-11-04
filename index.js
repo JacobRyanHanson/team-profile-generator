@@ -52,32 +52,68 @@ function getInfo(role, callback) {
 function buildTeam(manager) {
     const team = [];
     team.push(manager);
-    console.log(team)
-
-    inquirer.prompt({
+    
+    addEmployee();
+    function addEmployee() {
+        inquirer.prompt({
             type: "confirm",
             name: "again",
             message: "Enter another employee?: ",
             default: true
         }).then(function ({again}) {
-        if (again) {
-            inquirer.prompt({
-                type: "list",
-                name: "role",
-                message: "Select an employee: ",
-                choices: ["Engineer", "Intern"]
-            }).then(function ({role}) {
-                if (role === "Engineer") {
-                    team.push(createEngineer());
-                } else {
-                    team.push(createIntern());
-                }
-                console.log(team)
-            });
-        }
-    });  
+            if (again) {
+                inquirer.prompt({
+                    type: "list",
+                    name: "role",
+                    message: "Select an employee: ",
+                    choices: ["Engineer", "Intern"]
+                }).then(function ({role}) {
+                    if (role === "Engineer") {
+                        createEngineer(add);
+                    } else {
+                        createIntern(add);
+                    }
+                    function add(employee) {
+                        team.push(employee);
+                        console.log(team);
+                        addEmployee();
+                    }
+                });
+            }
+        }); 
+    } 
 }
 
-function createEngineer() {
-    
+function createEngineer(callback) {
+    getInfo("Engineer", addGithub);
+
+    function addGithub(combinedResponse) {
+        inquirer.prompt({
+            type: "text",
+            name: "github",
+            message: "Enter the engineer's GitHub username: "
+        }).then(function (responseGithub) {
+            combinedResponse.github = responseGithub.github;
+            return combinedResponse;
+        }).then(function ({name, email, id, github}) {
+            callback(new Engineer(name, email, id, github));
+        });
+    }
+}
+
+function createIntern(callback) {
+    getInfo("Intern", addGithub);
+
+    function addGithub(combinedResponse) {
+        inquirer.prompt({
+            type: "text",
+            name: "school",
+            message: "Enter the intern's school: "
+        }).then(function (responseSchool) {
+            combinedResponse.school = responseSchool.school;
+            return combinedResponse;
+        }).then(function ({name, email, id, school}) {
+            callback(new Intern(name, email, id, school));
+        });
+    }
 }
